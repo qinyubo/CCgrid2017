@@ -1,0 +1,25 @@
+\label{Section:introduction}
+
+High performance computing (HPC) has been played an important role in the field of computational science. From design perspective, HPC were built to maximize performance while irrespective of power and energy consumption, though their energy consumption has already occupied a large part of cost (i.e., operation cost). However, as we are approaching the exascale era, power is turning from an optimization goal to a critical operation constraint. U.S Department of Energy (DOE) has currently set a bound of 20MW for an exascale system.\cite{tolentino2012optimist} This strict power constraint poses a hard research challenge with current hardware and software. Sunway TaihuLight, the top one supercomputer as of June 2016, has a peak performance of 93.0 PetaFLOPS at 15.4 MW, which is 6.04 GigaFLOPS per watt. Sunway's power efficiency has improved three times then Tianhe-2. However, achieving the goal of exascale computing at 20 MW, it requires 50 GigaFLOPS per watt. So that, current HPC system still need at least a 8 times power efficiency improvement towards exascale. 
+
+In order to achieve this exascale system power constraint, current research efforts have studied power and performance tradeoffs, and how to balance these.\cite{ge2007cpu,hsu2005power,huang2009energy,freeh2005using,donofrio2009energy,gamell2013exploring} Many power management strategies have been proposed\cite{rountree2009adagio,lim2006adaptive,ioannou2011phase,li2010hybrid,rodero2010investigating}, but most of the works are tend to choose a performance and then constraint the power consumption under that performance loss. Even if this can meet power constraints, it significantly impacts performance. In fact, most scientific applications may not tolerate degradation in performance, other tradeoffs need to be explored to meet power budgets. 
+
+
+
+
+
+Many research efforts have studied power and performance tradeoffs, and most energy models or strategies are based on runtime (e.g., leveraging MPI slack) for power clamping or power capping techniques, like Dynamic Voltage and Frequency Scaling (DVFS) to constraint the power. However, power and performance are in the two sides of a balance scale, that it is hard to improve one side without scarifying the other one. Therefore, one of the key problems addressed in this research is keeping the power bound (or budget) without losing performance, which is challenging for real world applications targeting exascale. At the same time, it is clear that future HPC system's whole-system power constraint that will be filtered down to job-level power constrainti.e., power budgets need to be managed at application or workflow level. This indicates, as well as we believe that the applications should be involved in making tradeoffs decisions. 
+
+This work targeting on AMR-based simulation applications. AMR method considers a hierarchy of grids of differing resolutions ranging from the coarsest to the finest. It can focus computational resources in regions of interest while decrease computing resolution in regions with less interest. Less resolution means lighter workload and less power consumption. Therefore, this flexible resolution property gives us a potential opportunity to extract power budget for other usage. In order to take best advantage of it, this work first studies the mechanisms and policies to control AMR properties, and then, it characterizes LMC power performance running on different number of cores with different levels of resolution (e.g., levels of refinement in AMR). Finally, the characterization is complemented with power capping techniques (i.e., RAPL). The overarching goal of this work is to understand the tradeoffs between power-performance and quality, and building models taking into account AMR properties for managing power budgets and workflow at scale.
+
+The contributions of this work are summarized below:
+\begin{enumerate}
+\item It presents an empirical evaluation of different configurations of application that gives insights into the energy-performance-quality tradeoffs for scientific data-driven workflows. 
+\item It provides a comprehensive study of this LMC simulation performance, quality, and power and energy behavior.
+\item It presents a proof-of-concept study of potential of power capping and power management to balance power-performance-quality tradeoffs.
+\end{enumerate}
+
+
+The rest of this thesis is organized as follows. Section \ref{Section:related work} summarizes the related work. Section \ref{Section:approach} presents the proof of concepts. Section \ref{Section:experiments} describes the evaluation methodology and presents the results of the experimental evaluation. Section \ref{Section:conclution} concludes the chapter and outlines ongoing and future research.
+
+
